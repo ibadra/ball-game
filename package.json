@@ -1,0 +1,29 @@
+{
+  "name": "ball-game",
+  "version": "1.0.0",
+  "description": "Ball game for mintbean hackathon",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run lite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibadra/ball-game.git"
+  },
+  "keywords": [
+    "ball",
+    "game",
+    "mintbean",
+    "hackathon",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Ivon Badra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibadra/ball-game/issues"
+  },
+  "homepage": "https://github.com/ibadra/ball-game#readme"
+}
