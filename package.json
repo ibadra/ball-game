@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/ibadra/ball-game/issues"
   },
-  "homepage": "https://github.com/ibadra/ball-game#readme"
+  "homepage": "https://github.com/ibadra/ball-game#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
 }
