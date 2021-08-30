@@ -1,8 +1,8 @@
 #gameArea {
   border: solid black;
   display: block;
-  height: 100%;
-  width: 100%;
+  /* height: 100%;
+  width: 100%; */
 } /* To remove the scrollbars */
 
 * {
