@@ -39,8 +39,8 @@ function newLife() {
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
-// document.addEventListener("touchstart", touchHandler);
-// document.addEventListener("touchmove", touchHandler);
+document.addEventListener("touchstart", touchHandler);
+document.addEventListener("touchmove", touchHandler);
 //////////////////////////////////////////////////////////
 
 function keyDownHandler(e) {
@@ -80,14 +80,21 @@ function mouseMoveHandler(e) {
   }
 }
 
-// function touchHandler(e) {
-//   if (e.touches) {
-//     playerX = e.touches[0].pageX - canvas.offsetLeft - playerWidth / 2;
-//     playerY = e.touches[0].pageY - canvas.offsetTop - playerHeight / 2;
-//     output.textContent = `Touch:  x: ${playerX}, y: ${playerY}`;
-//     e.preventDefault();
-//   }
-// }
+function touchHandler(e) {
+  if (e.touches) {
+    let relativeX = e.touches[0].pageX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+      paddleX = relativeX - paddleWidth / 2;
+    }
+    if (paddleX + paddleWidth > canvas.width) {
+      paddleX = canvas.width - paddleWidth;
+    }
+    if (paddleX + paddleWidth < paddleWidth) {
+      paddleX = 0;
+    }
+    e.preventDefault();
+  }
+}
 
 // function touchHandler(e) {
 //   if (e.touches) {
@@ -97,6 +104,7 @@ function mouseMoveHandler(e) {
 //     e.preventDefault();
 //   }
 // }
+
 //GAME LOGIC AND FUNCTIONS
 
 function drawBall() {
