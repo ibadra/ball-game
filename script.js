@@ -1,11 +1,13 @@
 const canvas = document.getElementById("gameArea");
 const ctx = canvas.getContext("2d");
+const scoreMarker = document.getElementById("score");
+const livesMarker = document.getElementById("lives");
 
 ///////////////////VARIABLES//////////////////
 let x = canvas.width / 2;
 let y = canvas.height - 30;
-let dx = -6; //x motion direction
-let dy = -2; // y motion direction
+let dx = Math.floor(Math.random() * 5) + 5; //x motion direction
+let dy = Math.floor(Math.random() * 5) + 5; // y motion direction
 const ballRadius = 15; //Used for collision detection
 const paddleHeight = 10;
 const paddleWidth = 75;
@@ -20,32 +22,28 @@ const brickHeight = 20;
 const brickPadding = 3;
 const brickOffsetTop = 15;
 const brickOffsetLeft = 15;
+//Game variables
+let score = 0;
+let lives = 3;
+//RESTART FUNCTION
+function newLife() {
+  x = canvas.width / 2;
+  y = canvas.height - 30;
+  dx = Math.floor(Math.random() * 5) + 5; //x motion direction
+  dy = Math.floor(Math.random() * 5) + 5; // y motion direction
+  paddleX = (canvas.width - paddleWidth) / 2;
+}
 /////////////////////////////////////////////
 
 ///////////////////////EVENT LISTENERS/////////////////////
 document.addEventListener("keydown", keyDownHandler, false);
-// document.addEventListener("touchmove", swipeHandler, false);
-// document.addEventListener("touchend", stopSwipeHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+// document.addEventListener("touchstart", touchHandler);
+// document.addEventListener("touchmove", touchHandler);
 //////////////////////////////////////////////////////////
 
 function keyDownHandler(e) {
-  if (e.key === "Right" || e.key === "ArrowRight") {
-    rightMovement = true;
-    paddleX += 30;
-    if (paddleX + paddleWidth > canvas.width) {
-      paddleX = canvas.width - paddleWidth;
-    }
-  } else if (e.key === "Left" || e.key === "ArrowLeft") {
-    leftMovement = true;
-    paddleX -= 30;
-    if (paddleX + paddleWidth < paddleWidth) {
-      paddleX = 0;
-    }
-  }
-}
-
-function swipeHandler(e) {
   if (e.key === "Right" || e.key === "ArrowRight") {
     rightMovement = true;
     paddleX += 30;
@@ -69,21 +67,37 @@ function keyUpHandler(e) {
   }
 }
 
-// function swipeHandler(e) {
-//   if (e.touches[0].clientX > 0) {
-//     rightMovement = true;
-//     paddleX += 10;
-//     if (paddleX + paddleWidth > canvas.width) {
-//       paddleX = canvas.width - paddleWidth;
-//     }
-//   } else if (e.touches[0].clientX < 0) {
-//     leftMovement = true;
-//     paddleX -= 10;
-//     if (paddleX + paddleWidth < paddleWidth) {
-//       paddleX = 0;
-//     }
+function mouseMoveHandler(e) {
+  let relativeX = e.clientX - canvas.offsetLeft;
+  if (relativeX > 0 && relativeX < canvas.width) {
+    paddleX = relativeX - paddleWidth / 2;
+  }
+  if (paddleX + paddleWidth > canvas.width) {
+    paddleX = canvas.width - paddleWidth;
+  }
+  if (paddleX + paddleWidth < paddleWidth) {
+    paddleX = 0;
+  }
+}
+
+// function touchHandler(e) {
+//   if (e.touches) {
+//     playerX = e.touches[0].pageX - canvas.offsetLeft - playerWidth / 2;
+//     playerY = e.touches[0].pageY - canvas.offsetTop - playerHeight / 2;
+//     output.textContent = `Touch:  x: ${playerX}, y: ${playerY}`;
+//     e.preventDefault();
 //   }
 // }
+
+// function touchHandler(e) {
+//   if (e.touches) {
+//     playerX = e.touches[0].pageX - canvas.offsetLeft - playerWidth / 2;
+//     playerY = e.touches[0].pageY - canvas.offsetTop - playerHeight / 2;
+//     output.textContent = `Touch:  x: ${playerX}, y: ${playerY}`;
+//     e.preventDefault();
+//   }
+// }
+//GAME LOGIC AND FUNCTIONS
 
 function drawBall() {
   ctx.beginPath();
@@ -147,6 +161,12 @@ function collisionDetection() {
           dy = -dy;
           dx = -dx;
           b.status = 0;
+          score += 10;
+          if (score === brickRowCount * brickColumnCount * 10) {
+            alert("YOU WIN, CONGRATULATIONS!");
+            document.location.reload();
+          }
+          scoreMarker.textContent = score;
         }
       }
     }
@@ -163,11 +183,20 @@ function ballLoop() {
   y += dy;
   //Collision detection for Y axis
   if (y + dy < ballRadius) {
+    //Y top
     dy = -dy;
-  } else if (y + dy > canvas.height + ballRadius + 6) {
-    alert("Game Over");
-    document.location.reload();
-    clearInterval(interval);
+  } else if (y + dy > canvas.height + ballRadius) {
+    //Y bottom
+    lives--;
+    livesMarker.textContent = lives;
+    alert("Whoops!");
+    newLife();
+    if (lives === 0) {
+      alert("GAME OVER");
+      score = 0;
+      lives = 3;
+      document.location.reload();
+    }
   } else if (y + dy > canvas.height - ballRadius) {
     if (x > paddleX && x < paddleX + paddleWidth) {
       //x > paddleX: count from the left border of the paddle all the way to the right side of the canvas
@@ -179,5 +208,6 @@ function ballLoop() {
   if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
     dx = -dx;
   }
+  requestAnimationFrame(ballLoop);
 }
-let interval = setInterval(ballLoop, 9);
+ballLoop();
