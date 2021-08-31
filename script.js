@@ -4,16 +4,16 @@ const scoreMarker = document.getElementById("score");
 const livesMarker = document.getElementById("lives");
 
 ///////////////////VARIABLES//////////////////
-let x = canvas.width / 2;
-let y = canvas.height - 30;
-let dx = Math.floor(Math.random() * 5) + 5; //x motion direction
-let dy = Math.floor(Math.random() * 5) + 5; // y motion direction
+var x = canvas.width / 2;
+var y = canvas.height - 30;
+var dx = Math.floor(Math.random() * 5) + 5; //x motion direction
+var dy = Math.floor(Math.random() * 5) + 5; // y motion direction
 const ballRadius = 15; //Used for collision detection
 const paddleHeight = 10;
 const paddleWidth = 75;
-let paddleX = (canvas.width - paddleWidth) / 2;
-let rightMovement = false; //Right arrow is pressed
-let leftMovement = false; //Left arrow is pressed
+var paddleX = (canvas.width - paddleWidth) / 2;
+var rightMovement = false; //Right arrow is pressed
+var leftMovement = false; //Left arrow is pressed
 //Variables for bricks
 const brickRowCount = 4;
 const brickColumnCount = 6;
@@ -23,8 +23,8 @@ const brickPadding = 3;
 const brickOffsetTop = 15;
 const brickOffsetLeft = 15;
 //Game variables
-let score = 0;
-let lives = 3;
+var score = 0;
+var lives = 3;
 //RESTART FUNCTION
 function newLife() {
   x = canvas.width / 2;
@@ -68,7 +68,7 @@ function keyUpHandler(e) {
 }
 
 function mouseMoveHandler(e) {
-  let relativeX = e.clientX - canvas.offsetLeft;
+  var relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width) {
     paddleX = relativeX - paddleWidth / 2;
   }
@@ -82,7 +82,7 @@ function mouseMoveHandler(e) {
 
 function touchHandler(e) {
   if (e.touches) {
-    let relativeX = e.touches[0].pageX - canvas.offsetLeft;
+    var relativeX = e.touches[0].pageX - canvas.offsetLeft;
     if (relativeX > 0 && relativeX < canvas.width) {
       paddleX = relativeX - paddleWidth / 2;
     }
@@ -127,17 +127,17 @@ function drawPaddle() {
 
 //Creating the bricks as a two-dimensional array using a for loop
 const bricks = [];
-for (let c = 0; c < brickColumnCount; c++) {
+for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
-  for (let r = 0; r < brickRowCount; r++) {
+  for (var r = 0; r < brickRowCount; r++) {
     bricks[c][r] = { x: 0, y: 0, status: 1 };
   }
 }
 
 //Drawing the bricks in the canvas
 function drawBricks() {
-  for (let c = 0; c < brickColumnCount; c++) {
-    for (let r = 0; r < brickRowCount; r++) {
+  for (var c = 0; c < brickColumnCount; c++) {
+    for (var r = 0; r < brickRowCount; r++) {
       if (bricks[c][r].status === 1) {
         const brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
         const brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
@@ -156,9 +156,9 @@ function drawBricks() {
 //Collision detection for the bricks
 
 function collisionDetection() {
-  for (let c = 0; c < brickColumnCount; c++) {
-    for (let r = 0; r < brickRowCount; r++) {
-      let b = bricks[c][r];
+  for (var c = 0; c < brickColumnCount; c++) {
+    for (var r = 0; r < brickRowCount; r++) {
+      var b = bricks[c][r];
       if (b.status === 1) {
         if (
           x > b.x &&
@@ -216,6 +216,7 @@ function ballLoop() {
   if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
     dx = -dx;
   }
+
   requestAnimationFrame(ballLoop);
 }
 ballLoop();
