@@ -1,11 +1,7 @@
 #gameArea {
   border: solid black;
-  display: block;
-  /* height: 100%;
-  width: 100%; */
-} /* To remove the scrollbars */
+}
 
-* {
-  margin: 0;
-  padding: 0;
-} /* to remove the top and left whitespace */
+body {
+  padding: 1.5rem;
+}

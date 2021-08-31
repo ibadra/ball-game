@@ -13,7 +13,7 @@ let paddleX = (canvas.width - paddleWidth) / 2;
 let rightMovement = false; //Right arrow is pressed
 let leftMovement = false; //Left arrow is pressed
 //Variables for bricks
-const brickRowCount = 6;
+const brickRowCount = 4;
 const brickColumnCount = 6;
 const brickWidth = 75;
 const brickHeight = 20;
@@ -180,4 +180,4 @@ function ballLoop() {
     dx = -dx;
   }
 }
-let interval = setInterval(ballLoop, 20);
+let interval = setInterval(ballLoop, 9);
