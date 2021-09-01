@@ -28,6 +28,14 @@ const brickOffsetLeft = 15;
 var score = 0;
 var lives = 3;
 var paused = false;
+var requestAnimationFrame =
+  window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.msRequestAnimationFrame;
+var cancelAnimationFrame =
+  window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+var myReq;
 
 ///////////////////////EVENT LISTENERS/////////////////////
 document.addEventListener("keydown", keyDownHandler, false);
@@ -98,9 +106,11 @@ function handlePause() {
   if (!paused) {
     paused = true;
     pauseButton.textContent = "Resume";
+    console.log(paused);
   } else if (paused) {
     paused = false;
     pauseButton.textContent = "Pause";
+    console.log(paused);
   }
 }
 //////////////////////////////////////////////////////////
@@ -232,11 +242,18 @@ function handleStart() {
     if (x + dx < ballRadius || x + dx > canvas.width - ballRadius) {
       dx = -dx;
     }
-    if (!paused) {
-      let myReq = requestAnimationFrame(ballLoop);
-    } else {
-      myReq = cancelAnimationFrame(ballLoop);
+    var myReq = undefined;
+    myReq = requestAnimationFrame(ballLoop);
+    if (paused) {
+      cancelAnimationFrame(myReq);
+      myReq = undefined;
     }
+    // var myReq = requestAnimationFrame(ballLoop);
+    // if (!paused) {
+    //   myReq = requestAnimationFrame(ballLoop);
+    // } else {
+    //   cancelAnimationFrame(myReq);
+    // }
   }
   ballLoop();
 }
