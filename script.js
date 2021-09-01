@@ -4,6 +4,18 @@ const scoreMarker = document.getElementById("score");
 const livesMarker = document.getElementById("lives");
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
+const images = [
+  "url('img/1.png')",
+  "url('img/2.png')",
+  "url('img/3.png')",
+  "url('img/4.png')",
+  "url('img/5.png')",
+  "url('img/6.png')",
+  "url('img/7.png')",
+  "url('img/8.png')",
+];
+
+canvas.style.backgroundImage = images[Math.floor(Math.random() * 7)]; //Sets random background image
 
 ///////////////////VARIABLES//////////////////
 var x = canvas.width / 2;
@@ -17,7 +29,7 @@ var paddleX = (canvas.width - paddleWidth) / 2;
 var rightMovement = false; //Right arrow is pressed
 var leftMovement = false; //Left arrow is pressed
 //Variables for bricks
-const brickRowCount = 4;
+const brickRowCount = 15;
 const brickColumnCount = 6;
 const brickWidth = 75;
 const brickHeight = 20;
@@ -246,7 +258,6 @@ function handleStart() {
     myReq = requestAnimationFrame(ballLoop);
     if (paused) {
       cancelAnimationFrame(myReq);
-      myReq = undefined;
     }
     // var myReq = requestAnimationFrame(ballLoop);
     // if (!paused) {
