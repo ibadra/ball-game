@@ -52,7 +52,7 @@ document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 document.addEventListener("touchstart", touchHandler);
 document.addEventListener("touchmove", touchHandler);
-pauseButton.addEventListener("click", handlePause);
+// pauseButton.addEventListener("click", handlePause);
 startButton.addEventListener("click", handleStart);
 //////////////////////////////////////////////////////////
 
