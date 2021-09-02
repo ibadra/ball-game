@@ -33,6 +33,7 @@ p {
 
 audio {
   background-color: #fff3cd;
+  visibility: hidden;
 }
 
 #start {
