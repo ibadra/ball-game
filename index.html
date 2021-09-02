@@ -30,15 +30,27 @@
           height="500"
           class="col img-fluid"
         ></canvas>
-        <div class="sideDrawer col">
+        <div class="sideDrawer col text-center">
           <h1>Ball Game</h1>
-          <h4>Score: <span id="score">0</span></h4>
-          <h4>Lives: <span id="lives">3</span></h4>
-          <button class="btn btn-primary" id="start">Start</button>
-          <button class="btn btn-primary" id="pause">Pause</button>
+          <div class="row offset-1">
+            <h4 class="col-5">Score: <span id="score">0</span></h4>
+            <h4 class="col-5">Lives: <span id="lives">3</span></h4>
+          </div>
+          <div class="pt-2">
+            <button class="btn btn-lg btn-info text-white" id="start">
+              Start
+            </button>
+            <button class="btn btn-lg btn-info text-white" id="pause">
+              Pause
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <!-- <div id="tryAgainModal">
+      <h6>Whoops!...</h6>
+      <button id="tryAgainBtn" type="button">Try again</button>
+    </div> -->
     <!-- build:js js/main.js -->
     <script src="script.js"></script>
     <!-- endbuild -->

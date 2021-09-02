@@ -9,19 +9,16 @@ const images = [
   "url('img/2.png')",
   "url('img/3.png')",
   "url('img/4.png')",
-  "url('img/5.png')",
   "url('img/6.png')",
-  "url('img/7.png')",
-  "url('img/8.png')",
 ];
 
-canvas.style.backgroundImage = images[Math.floor(Math.random() * 7)]; //Sets random background image
+canvas.style.backgroundImage = images[Math.floor(Math.random() * 4)]; //Sets random background image
 
 ///////////////////VARIABLES//////////////////
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var dx = Math.floor(Math.random() * 5) + 5; //x motion direction
-var dy = Math.floor(Math.random() * 5) + 5; // y motion direction
+var dx = Math.floor(Math.random() * 3) + 4; //x motion direction
+var dy = Math.floor(Math.random() * 3) + 4; // y motion direction
 const ballRadius = 15; //Used for collision detection
 const paddleHeight = 10;
 const paddleWidth = 75;
@@ -151,7 +148,7 @@ function handleStart() {
   function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "#053742";
     ctx.fill();
     ctx.closePath();
   }
@@ -179,7 +176,7 @@ function handleStart() {
           bricks[c][r].y = brickY;
           ctx.beginPath();
           ctx.rect(brickX, brickY, brickWidth, brickHeight);
-          ctx.fillStyle = "#0095DD";
+          ctx.fillStyle = "#000000";
           ctx.fill();
           ctx.closePath();
         }
@@ -205,7 +202,9 @@ function handleStart() {
             b.status = 0;
             score += 10;
             if (score === brickRowCount * brickColumnCount * 10) {
-              alert("YOU WIN, CONGRATULATIONS!");
+              let button = document.getElementById("buttonAppear");
+              button.style.visibility = "visible";
+              alert("YOU WON, CONGRATULATIONS!");
               newLife();
               score = 0;
               lives = 3;
@@ -238,6 +237,11 @@ function handleStart() {
       //Y bottom
       lives--;
       livesMarker.textContent = lives;
+      // let tryAgainModal = document.getElementById("tryAgainModal");
+      // tryAgainModal.style.visibility = "visible";
+      // let tryAgainBtn = document.getElementById("tryAgainBtn");
+      // tryAgainBtn.addEventListener("click", newLife);
+      // tryAgainModal.style.visibility = "hidden";
       alert("Whoops!");
       newLife();
       if (!lives) {
