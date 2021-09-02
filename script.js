@@ -202,8 +202,8 @@ function handleStart() {
             b.status = 0;
             score += 10;
             if (score === brickRowCount * brickColumnCount * 10) {
-              let button = document.getElementById("buttonAppear");
-              button.style.visibility = "visible";
+              // let button = document.getElementById("buttonAppear");
+              // button.style.visibility = "visible";
               alert("YOU WON, CONGRATULATIONS!");
               newLife();
               score = 0;
