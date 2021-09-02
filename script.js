@@ -111,17 +111,17 @@ function touchHandler(e) {
   }
 }
 
-function handlePause() {
-  if (!paused) {
-    paused = true;
-    pauseButton.textContent = "Resume";
-    console.log(paused);
-  } else if (paused) {
-    paused = false;
-    pauseButton.textContent = "Pause";
-    console.log(paused);
-  }
-}
+// function handlePause() {
+//   if (!paused) {
+//     paused = true;
+//     pauseButton.textContent = "Resume";
+//     console.log(paused);
+//   } else if (paused) {
+//     paused = false;
+//     pauseButton.textContent = "Pause";
+//     console.log(paused);
+//   }
+// }
 //////////////////////////////////////////////////////////
 
 //GAME LOGIC AND FUNCTIONS

@@ -30,3 +30,11 @@ button {
 p {
   font-size: 2rem;
 }
+
+audio {
+  background-color: #fff3cd;
+}
+
+#start {
+  margin-left: 2.5rem;
+}
