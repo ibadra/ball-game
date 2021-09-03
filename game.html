@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- build:css styles.css -->
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- endbuild -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Patua+One&family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Ball Game</title>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="row">
+        <canvas
+          id="gameArea"
+          width="500"
+          height="500"
+          class="col img-fluid"
+        ></canvas>
+        <div class="sideDrawer col text-center">
+          <h1>Ball Game</h1>
+          <div class="row offset-1">
+            <h4 class="col-5">Score: <span id="score">0</span></h4>
+            <h4 class="col-5">Lives: <span id="lives">3</span></h4>
+          </div>
+          <div class="pt-2">
+            <button class="btn btn-lg btn-info text-white" id="start">
+              Start
+            </button>
+            <p class="pt-4">
+              Instructions: move the paddle to the right or left (use either the
+              arrows on your keyboard, your mouse or touch your screen), do not
+              let the ball fall down. Once you had destroyed all the bars, you
+              win! 😃
+            </p>
+            <audio controls autoplay loop>
+              <source src="audio/music.wav" type="audio/wav" />
+              Your browser does not support the audio element.
+            </audio>
+            <!-- <button class="btn btn-lg btn-info text-white" id="pause">
+              Pause
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div id="tryAgainModal">
+      <h6>Whoops!...</h6>
+      <button id="tryAgainBtn" type="button">Try again</button>
+    </div> -->
+    <!-- build:js script.js -->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

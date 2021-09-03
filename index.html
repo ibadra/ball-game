@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- build:css css/main.css -->
+    <!-- build:css styles.css -->
     <link
       rel="stylesheet"
       href="node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
     <link
       rel="stylesheet"
-      href="node_modules\@fortawesome\fontawesome-free\css\fontawesome.min.css"
+      href="node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css"
     />
+    <script
+      defer
+      src="node_modules/@fortawesome/fontawesome-free/js/brands.js"
+    ></script>
+    <script
+      defer
+      src="node_modules/@fortawesome/fontawesome-free/js/solid.js"
+    ></script>
+    <script
+      defer
+      src="node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"
+    ></script>
     <link rel="stylesheet" href="styles.css" />
+
     <!-- endbuild -->
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Patua+One&family=Poppins:wght@300&display=swap"
@@ -21,48 +34,75 @@
     />
     <title>Ball Game</title>
   </head>
+
   <body>
-    <div class="container">
-      <div class="row">
-        <canvas
-          id="gameArea"
-          width="500"
-          height="500"
-          class="col img-fluid"
-        ></canvas>
-        <div class="sideDrawer col text-center">
-          <h1>Ball Game</h1>
-          <div class="row offset-1">
-            <h4 class="col-5">Score: <span id="score">0</span></h4>
-            <h4 class="col-5">Lives: <span id="lives">3</span></h4>
+    <section id="intro">
+      <h1 class="text-center title">The Ball Game</h1>
+      <div class="container">
+        <div class="row pt-3">
+          <div class="col">
+            <img src="img/screen.png" class="image-fluid" alt="game" />
           </div>
-          <div class="pt-2">
-            <button class="btn btn-lg btn-info text-white" id="start">
-              Start
-            </button>
-            <p class="pt-4">
-              Instructions: move the paddle to the right or left (use either the
-              arrows on your keyboard, your mouse or touch your screen), do not
-              let the ball fall down. Once you had destroyed all the bars, you
-              win! 😃
+          <div class="col">
+            <p>
+              This ball game is inspired in Breakout, an arcade game developed
+              and published by Atari, Inc. in 1976. It was conceptualized by
+              Nolan Bushnell and Steve Bristow, influenced by the seminal 1972
+              Atari arcade game Pong. In Breakout, a layer of bricks lines the
+              top third of the screen and the goal is to destroy them all by
+              repeatedly bouncing a ball off a paddle into them.
             </p>
-            <audio controls autoplay>
-              <source src="audio/music.wav" type="audio/wav" />
-              Your browser does not support the audio element.
-            </audio>
-            <!-- <button class="btn btn-lg btn-info text-white" id="pause">
-              Pause
-            </button> -->
+            <a href="game.html"
+              ><button class="btn btn-info btn-lg text-white">Play</button></a
+            >
+            <a href="https://github.com/ibadra/ball-game" target="_blank"
+              ><button class="btn btn-dark">Source code</button></a
+            >
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div id="tryAgainModal">
-      <h6>Whoops!...</h6>
-      <button id="tryAgainBtn" type="button">Try again</button>
-    </div> -->
-    <!-- build:js js/main.js -->
-    <script src="script.js"></script>
+    </section>
+    <section class="container">
+      <h2 class="text-center pt-5">Instructions</h2>
+      <p class="py-5 mb-5">
+        Move the paddle to the right or left (use either the arrows on your
+        keyboard, your mouse or touch your screen), do not let the ball fall
+        down. Once you had destroyed all the bars, you win! 😃
+      </p>
+    </section>
+    <section id="info" class="container-fluid">
+      <h2 class="by">Developed by...</h2>
+      <div class="row mt-5 ml-lg-4 align-items-center justify-content-center">
+        <div class="col-4">
+          <img
+            src="img/profile.png"
+            class="image-fluid profile"
+            alt="profile"
+          />
+        </div>
+        <div class="col-7 col-md-5">
+          <h3 class="name">Ivon Badra</h3>
+          <p>
+            Web Developer based in Orlando, FL<br />Enjoy creating appealing,
+            functional websites.
+          </p>
+          <a href="https://github.com/ibadra"
+            ><i class="fab fa-github fa-2x"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/ibadra/"
+            ><i class="fab fa-linkedin fa-2x"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+    <section id="footer" class="text-center">
+      Game developed for the Aug-2021 Mintbean Hackathon
+    </section>
+
+    <!-- build:js script.js -->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- endbuild -->
   </body>
 </html>

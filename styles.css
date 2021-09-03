@@ -4,7 +4,7 @@
 }
 
 body {
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   background-color: #fff3cd;
   font-family: "Open Sans Condensed", sans-serif;
 }
@@ -38,4 +38,39 @@ audio {
 
 #start {
   margin-left: 2.5rem;
+}
+
+.title {
+  font-size: 600%;
+}
+
+#intro {
+  padding-bottom: 5rem;
+}
+#info {
+  background-color: #9e7777;
+  padding-bottom: 5rem;
+}
+
+.profile {
+  width: 80%;
+}
+
+a {
+  color: #11052c;
+  margin-right: 1rem;
+}
+
+a:hover {
+  color: #ffb344;
+}
+
+.by {
+  font-weight: bold;
+  padding-top: 4rem;
+  padding-left: 7rem;
+}
+
+.name {
+  font-weight: bold;
 }
