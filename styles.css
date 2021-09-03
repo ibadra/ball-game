@@ -1,12 +1,12 @@
-#gameArea {
-  border: solid 1rem #fba746;
-  border-radius: 5rem;
-}
-
 body {
   /* padding: 1.5rem; */
   background-color: #fff3cd;
   font-family: "Open Sans Condensed", sans-serif;
+}
+
+#gameArea {
+  border: solid 1rem #fba746;
+  border-radius: 5rem;
 }
 
 h1 {
