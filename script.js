@@ -237,11 +237,6 @@ function handleStart() {
       //Y bottom
       lives--;
       livesMarker.textContent = lives;
-      // let tryAgainModal = document.getElementById("tryAgainModal");
-      // tryAgainModal.style.visibility = "visible";
-      // let tryAgainBtn = document.getElementById("tryAgainBtn");
-      // tryAgainBtn.addEventListener("click", newLife);
-      // tryAgainModal.style.visibility = "hidden";
       alert("Whoops!");
       newLife();
       if (!lives) {
