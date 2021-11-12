@@ -22,12 +22,26 @@ button {
   font-family: "Poppins", sans-serif;
 }
 
+.game-photo {
+  max-width: 90vw;
+}
+
 #start {
   margin-right: 3rem;
 }
 
 p {
   font-size: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  p {
+    font-size: 1.65rem;
+  }
+  h2.by {
+    padding: 0;
+    padding-top: 1.5rem;
+  }
 }
 
 audio {
@@ -41,6 +55,7 @@ audio {
 
 .title {
   font-size: 600%;
+  max-width: 100vw;
 }
 
 #intro {
@@ -53,6 +68,7 @@ audio {
 
 .profile {
   width: 80%;
+  margin-bottom: 2rem;
 }
 
 a {
